@@ -87,7 +87,9 @@ var app = new Vue({
         canplay: function(){
             this.alltime = parseInt(this.$refs.player.duration);
             document.title = "▶ " +this.name+" - "+this.artist;
-            history.pushState(null, null, '?id='+this.id);
+            if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == "micromessenger") {
+                history.pushState(null, null, '?id='+this.id);
+            }
             setTimeout("mdui.updateSliders()", 1000);
         },
         play: function(t){
@@ -201,6 +203,7 @@ var app = new Vue({
 mdui.JQ(function(){
     var t = mdui.JQ(window).height();
     mdui.JQ("body").height(t + "px");
-    mdui.JQ(".result").height(t * 0.4 + "px");
+    mdui.JQ("#app").height(t*0.84 + "px");
+    mdui.JQ(".result").height(t*0.4 + "px");
     app.player(app.getQueryString("id") || 38592976);
 });
