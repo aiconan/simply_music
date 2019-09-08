@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Simply Music</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Cache-Control" content="no-transform">
+        <meta http-equiv="Cache-Control" content="no-siteapp">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="apple-touch-icon" href="/favicon.ico">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+        <link rel="stylesheet" href="./css/mdui@0.4.3.min.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body class="mdui-theme-accent-green">
+        <div id="app" class="mdui-valign">
+            <header class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed">
+                <div class="mdui-toolbar">
+                    <a href="javascript:;" class="mdui-typo-title" v-show="name && artist">
+                        {{ name }} <small>- {{ artist }}</small>
+                    </a>
+                    <div class="mdui-toolbar-spacer"></div>
+                    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false}">
+                        <i class="mdui-icon material-icons">search</i>
+                    </a>
+                </div>
+            </header>
+            <main class="mdui-container">
+                <div class="info_lyric" :style="{ transform: 'translateY(-'+moving+'px)' }">
+                    <div class="lyric_box mdui-text-center" v-for="(value, name, index) in lyric" :time="name">
+                        <div class="lyric">{{ value }}</div>
+                        <div class="tlyric" v-if="tlyric">{{ tlyric[name] }}</div>
+                    </div>
+                </div>
+                <div class="mdui-dialog s_dialog" id="search_box">
+                    <input type="text" placeholder="键入曲名，回车搜索" @keyup.enter="s_page = 1; search(s_text)" v-model="s_text" />
+                    <div class="mdui-spinner s_loading" v-show="s_loading"></div>
+                    <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
+                        <i class="mdui-icon material-icons">close</i>
+                    </button>
+                    <div class="result mdui-list" ref="s_result">
+                        <div class="mdui-list-item" v-if="s_data" v-for="item in s_data" @click="player(item.id)">
+                            <div class="mdui-list-item-content">
+                                <span>{{ item.name }}</span>
+                                <br />
+                                <small v-for="i in item.artists">[ {{ i.name }} ] </small>
+                            </div>
+                            <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
+                        </div>
+                        <button class="mdui-btn mdui-m-t-1 mdui-center" v-if="s_data" @click="search(s_text)">加载更多</button>
+                    </div>
+                </div>
+                <div class="mdui-dialog d_dialog" id="detail_box">
+                    <div class="d_title mdui-valign mdui-p-l-2">
+                        <div>详情</div>
+                        <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
+                            <i class="mdui-icon material-icons">close</i>
+                        </button>
+                    </div>
+                    <div class="d_detail mdui-p-y-1">
+                        <img class="mdui-center" :src="picurl" width="156" height="156" />
+                        <div class="mdui-center mdui-text-center">
+                            <p>（手机端长按保存图片，电脑端右键另存为）</p>
+                            <p>曲名：{{ name }}</p>
+                            <p>歌手：{{ artist }}</p>
+                            <p>专辑：{{ album }}</p>
+                            <button class="mdui-btn mdui-ripple" @click="window.open(url)">下载歌曲</button>
+                        </div>
+                    </div>
+                </div>
+                <audio ref="player" :src="url" @canplay="canplay" @play="play('play')" @pause="playnow = false"></audio>
+            </main>
+            <footer class="mdui-container">
+                <button class="btn-ph"></button>
+                <transition name="slide-fade">
+                    <label class="mdui-slider setvalume" v-show="set_volume === true">
+                        <input type="range" id="setvolume" step="1" min="0" max="100" @input="setvolume(volume)" @change="set_volume = false" v-model="volume"/>
+                    </label>
+                </transition>
+                <button class="mdui-btn mdui-btn-icon mdui-btn-dense set_volume" @click="set_volume = !set_volume">
+                    <i class="mdui-icon material-icons" v-if="volume != 0">volume_up</i>
+                    <i class="mdui-icon material-icons" v-if="volume == 0">volume_off</i>
+                </button>
+                <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" mdui-dialog="{target: '#detail_box', history: false}">
+                    <i class="mdui-icon material-icons">more_vert</i>
+                </button>
+                <label class="mdui-slider mdui-center changetime">
+                    <input type="range" id="progress" step="1" min="0" :max="alltime" @change="change(currentTime)" v-model="currentTime"/>
+                </label>
+                <span>{{ s_to_hs(currentTime) }}</span>
+                <span class="mdui-float-right">{{ s_to_hs(alltime) }}</span>
+                <button class="mdui-btn btn mdui-btn-icon mdui-center play" @click="play" v-if="loading_done">
+                    <transition name="fade">
+                        <i class="mdui-icon material-icons" :key="playnow">
+                            {{ playnow ? 'pause' : 'play_arrow' }}
+                        </i>
+                    </transition>
+                </button>
+                <div class="mdui-spinner" v-show="!loading_done"></div>
+            </footer>
+            <div class="bg-mask"></div>
+            <transition name="fade">
+                <div class="bg-img" v-show="loading_done" :style="{ backgroundImage: 'url('+picurl+')' }"></div>
+            </transition>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/eruda@1.5.8/eruda.min.js"></script>
+        <script type="text/javascript">eruda.init()</script>
+        <script src="./js/mdui@0.4.3.min.js"></script>
+        <script src="./js/vue@2.6.10.min.js"></script>
+        <script src="./js/app.js"></script>
+    </body>
+</html>
