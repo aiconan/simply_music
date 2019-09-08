@@ -1,1 +1,1 @@
-# Simply Music Playr
+# Simply Music Player
