@@ -81,7 +81,7 @@ var app = new Vue({
                     app.$refs.player.load();
                     mdui.updateSliders();
                     app.loading_done = true;
-                    mdui.JQ("[rel=\"shortcut icon\"]").attr("href",app.picurl)
+                    mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
                 }
             })
         },
