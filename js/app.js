@@ -87,7 +87,7 @@ var app = new Vue({
         canplay: function(){
             this.alltime = parseInt(this.$refs.player.duration);
             document.title = "▶ " +this.name+" - "+this.artist;
-            if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == "micromessenger") {
+            if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) !== "micromessenger") {
                 history.pushState(null, null, '?id='+this.id);
             }
             setTimeout("mdui.updateSliders()", 1000);

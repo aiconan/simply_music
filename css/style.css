@@ -22,11 +22,11 @@ body {
     background-size: cover;  
     background-position: 50%;
     filter: url(blur.svg#blur); 
-    -webkit-filter: blur(16px);
-    -moz-filter: blur(16px);  
-    -ms-filter: blur(16px);      
-    filter: blur(16px);  
-    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false);
+    -webkit-filter: blur(40px);
+    -moz-filter: blur(40px);  
+    -ms-filter: blur(40px);      
+    filter: blur(40px);  
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=40, MakeShadow=false);
 }  
 .bg-img, .bg-mask {  
     position: absolute;  
@@ -63,6 +63,12 @@ main {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: .04em;
+}
+.show .lyric, .show .tlyric {
+    height: auto!important;
+    overflow: auto!important;
+    text-overflow: unset!important;
+    white-space: unset!important;
 }
 .lyric_box {
     padding-top: 10px;
