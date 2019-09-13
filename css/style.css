@@ -140,6 +140,9 @@ main {
     height: 40vh;
     overflow-y: auto;
 }
+.s_dialog, .d_dialog {
+    top: 10px!important;
+}
 footer {
     position: absolute;
     bottom: 8px;
@@ -214,9 +217,4 @@ footer .mdui-spinner {
 }
 .fade-enter, .fade-leave-to{
     opacity: 0;
-}
-@media (max-width: 599px) {
-    .s_dialog, .d_dialog {
-        top: 10px!important;
-    }
 }
