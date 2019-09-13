@@ -28,7 +28,7 @@
                 </div>
             </header>
             <main class="mdui-container">
-                <div class="info_lyric" :style="{ transform: 'translateY(-'+moving+'px)' }">
+                <div class="info_lyric">
                     <div class="lyric_box" v-for="(value, name, index) in lyric" :time="name">
                         <div class="lyric">{{ value }}</div>
                         <div class="tlyric" v-if="tlyric">{{ tlyric[name] }}</div>
@@ -111,6 +111,7 @@
         <script type="text/javascript">eruda.init()</script>
         <script src="./js/mdui@0.4.3.min.js"></script>
         <script src="./js/vue@2.6.10.min.js"></script>
+        <script src="./js/iscroll-lite@5.2.0.min.js"></script>
         <script src="./js/app.js"></script>
     </body>
 </html>

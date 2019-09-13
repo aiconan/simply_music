@@ -42,6 +42,9 @@ body {
     height: 100%;
     left: 0px;
     top: 0px;
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
 }  
 .bg-mask {
     background-color: rgba(0,0,0,.60);  
@@ -54,11 +57,6 @@ main {
     position: relative;
     height: 290px;
     overflow: hidden;
-}
-.info_lyric {
-    -webkit-transition: -webkit-transform .3s ease-out;
-    transition: -webkit-transform .3s ease-out;
-    transition: transform .3s ease-out,-webkit-transform .3s ease-out;
 }
 .lyric, .tlyric {
     height: 18px;
@@ -169,12 +167,6 @@ footer .mdui-spinner {
     height: 36px;
     display: block;
     margin: 6px auto;
-}
-.mdui-spinner {
-    /**
-    -webkit-animation: mdui-spinner 0ms linear infinite;
-    animation: mdui-spinner 0ms linear infinite;
-    **/
 }
 .mdui-spinner-layer {
     border-color: #69f0ae;

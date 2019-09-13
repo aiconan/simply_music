@@ -76,14 +76,18 @@ var app = new Vue({
                     }
                     app.url = "https://music.163.com/song/media/outer/url?id=" + id + ".mp3";
                     app.picurl = data.al.picUrl;
-                    app.bgurl = "https://music.163.com/api/img/blur/" + data.al.pic_str;
+                    if (data.al.pic_str) {
+                        app.bgurl = "https://music.163.com/api/img/blur/" + data.al.pic_str;
+                    } else {
+                        app.bgurl = "https://music.163.com/api/img/blur/" + data.al.pic;
+                    }
                     app.getlyric(id);
                     app.$refs.player.pause();
                     app.playnow = false;
                     app.$refs.player.load();
                     mdui.updateSliders();
-                    app.loading_done = true;
                     mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
+                    app.loading_done = true;
                 }
             })
         },
@@ -109,24 +113,25 @@ var app = new Vue({
                         app.play("play");
                     }
                     for (name in app.lyric) {
-                        if (name <= app.currentTime) {
+                        if (name == app.currentTime) {
                             mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
                             mdui.JQ("div[time = '" + name + "']").addClass("show");
                             if (app.tlyric) {
                                 var co = mdui.JQ("div[time='"+name+"']").index() - 2;
-                                if( co > 0) {
-                                    app.moving = 56*co;
-                                } else if ( co = -2) {
+                                if(co > 0) {
+                                    app.moving = -56*co;
+                                } else if(co == -2) {
                                     app.moving = 0;
                                 }
                             } else {
                                 var co = mdui.JQ("div[time='"+name+"']").index() - 3;
-                                if( co > 0) {
-                                    app.moving = 38*co;
-                                } else if ( co = -2) {
+                                if(co > 0) {
+                                    app.moving = -38*co;
+                                } else if (co == -2) {
                                     app.moving = 0;
                                 }
                             }
+                            main_scroll.scrollTo(0, app.moving, 300);
                         }
                     }
                 }
@@ -157,6 +162,9 @@ var app = new Vue({
                     } else {
                         app.tlyric = "";
                     }
+                    setTimeout(() => {
+                        main_scroll.refresh();
+                    }, 0);
                 }
             })
         },
@@ -203,12 +211,12 @@ var app = new Vue({
         }
     },
 });
-mdui.JQ(function(){
-    var t = mdui.JQ(window).height();
-    var r = mdui.JQ("header").height();
-    mdui.JQ("body").height(t + "px");
-    mdui.JQ("#app").height(t*0.84 + "px");
-    mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
-    mdui.JQ(".result").height(t*0.4 + "px");
-    app.player(app.getQueryString("id") || 38592976);
-});
+
+var t = mdui.JQ(window).height();
+var r = mdui.JQ("header").height();
+mdui.JQ("body").height(t + "px");
+mdui.JQ("#app").height(t*0.84 + "px");
+mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
+mdui.JQ(".result").height(t*0.4 + "px");
+var main_scroll = new IScroll('main');
+app.player(app.getQueryString("id") || 38592976);
