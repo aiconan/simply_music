@@ -18,13 +18,13 @@
         <div id="app" class="mdui-valign">
             <header class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed">
                 <div class="mdui-toolbar">
-                    <a href="javascript:;" class="mdui-typo-title" v-show="name && artist">
+                    <span href="javascript:;" class="mdui-typo-title" v-show="name && artist">
                         {{ name }} <small>- {{ artist }}</small>
-                    </a>
+                    </span>
                     <div class="mdui-toolbar-spacer"></div>
-                    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false}">
+                    <button href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false}">
                         <i class="mdui-icon material-icons">search</i>
-                    </a>
+                    </button>
                 </div>
             </header>
             <main class="mdui-container">
