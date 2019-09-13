@@ -29,7 +29,7 @@
             </header>
             <main class="mdui-container">
                 <div class="info_lyric" :style="{ transform: 'translateY(-'+moving+'px)' }">
-                    <div class="lyric_box mdui-text-center" v-for="(value, name, index) in lyric" :time="name">
+                    <div class="lyric_box" v-for="(value, name, index) in lyric" :time="name">
                         <div class="lyric">{{ value }}</div>
                         <div class="tlyric" v-if="tlyric">{{ tlyric[name] }}</div>
                     </div>
@@ -80,7 +80,9 @@
                     </label>
                 </transition>
                 <button class="mdui-btn mdui-btn-icon mdui-btn-dense set_volume" @click="set_volume = !set_volume">
-                    <i class="mdui-icon material-icons" v-if="volume != 0">volume_up</i>
+                    <i class="mdui-icon material-icons" v-if="volume == 100">volume_up</i>
+                    <i class="mdui-icon material-icons" v-if="volume >= 50 && volume < 100">volume_down</i>
+                    <i class="mdui-icon material-icons" v-if="volume > 0 && volume < 50">volume_mute</i>
                     <i class="mdui-icon material-icons" v-if="volume == 0">volume_off</i>
                 </button>
                 <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" mdui-dialog="{target: '#detail_box', history: false}">
@@ -102,7 +104,7 @@
             </footer>
             <div class="bg-mask"></div>
             <transition name="fade">
-                <div class="bg-img" v-show="loading_done" :style="{ backgroundImage: 'url('+picurl+')' }"></div>
+                <div class="bg-img" v-show="loading_done" :style="{ backgroundImage: 'url('+bgurl+')' }"></div>
             </transition>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/eruda@1.5.8/eruda.min.js"></script>
