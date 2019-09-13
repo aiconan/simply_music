@@ -30,10 +30,10 @@ body {
 }  
 .bg-img, .bg-mask {  
     position: absolute;  
-    width: 140%;
-    height: 140%;
-    left: -40px;
-    top: -40px;
+    width: 150%;
+    height: 150%;
+    left: -50px;
+    top: -50px;
 }  
 .bg-mask {
     background-color: rgba(0,0,0,.60);  

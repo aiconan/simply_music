@@ -92,7 +92,7 @@
                 <span>{{ s_to_hs(currentTime) }}</span>
                 <span class="mdui-float-right">{{ s_to_hs(alltime) }}</span>
                 <button class="mdui-btn btn mdui-btn-icon mdui-center play" @click="play" v-if="loading_done">
-                    <transition name="fade">
+                    <transition name="fade" :duration="200">
                         <i class="mdui-icon material-icons" :key="playnow">
                             {{ playnow ? 'pause' : 'play_arrow' }}
                         </i>
