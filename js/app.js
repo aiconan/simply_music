@@ -218,7 +218,5 @@ mdui.JQ("body").height(t + "px");
 mdui.JQ("#app").height(t*0.84 + "px");
 mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
 mdui.JQ(".result").height(t*0.4 + "px");
-var main_scroll = new IScroll('main', {
-    
-});
+var main_scroll = new IScroll('main');
 app.player(app.getQueryString("id") || 38592976);

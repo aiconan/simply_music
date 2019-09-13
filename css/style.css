@@ -57,6 +57,7 @@ main {
     position: relative;
     height: 290px;
     overflow: hidden;
+    touch-action: none;
 }
 .lyric, .tlyric {
     height: 18px;
