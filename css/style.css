@@ -21,6 +21,11 @@ body {
     background-repeat: no-repeat;
     background-size: cover;  
     background-position: 50%;
+    transition: opacity .3s linear;
+    transform-origin: center top;
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
     /**
     filter: url(blur.svg#blur); 
     -webkit-filter: blur(40px);
@@ -42,16 +47,13 @@ body {
     height: 100%;
     left: 0px;
     top: 0px;
-    -webkit-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    transform: scale(1.5);
 }  
 .bg-mask {
-    background-color: rgba(0,0,0,.60);  
-    z-index: 1000;  
+    background-color: rgba(0,0,0,.5);  
+    z-index: 1;  
 } 
 header, main, footer {
-    z-index: 9999!important;
+    z-index: 6000!important;
 }
 main {
     position: relative;

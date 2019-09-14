@@ -58,6 +58,7 @@ var app = new Vue({
                 method: "GET",
                 beforeSend: function() {
                     if (id == app.id) return false;
+                    app.lyric = ["","","","加载中，请稍候……"];
                     app.loading_done = false;
                 },
                 success: function(data) {
@@ -117,16 +118,22 @@ var app = new Vue({
                             mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
                             mdui.JQ("div[time = '" + name + "']").addClass("show");
                             if (app.tlyric) {
+                                var lo = mdui.JQ(".info_lyric>div").length - 4;
                                 var co = mdui.JQ("div[time='"+name+"']").index() - 2;
-                                if(co > 0) {
+                                if(co > 0 && co < lo) {
                                     app.moving = -56*co;
+                                } else if(co > lo) {
+                                    app.moving = -56*(co-2);
                                 } else if(co == -2) {
                                     app.moving = 0;
                                 }
                             } else {
+                                var lo = mdui.JQ(".info_lyric>div").length - 6;
                                 var co = mdui.JQ("div[time='"+name+"']").index() - 3;
-                                if(co > 0) {
+                                if(co > 0 && co < lo) {
                                     app.moving = -38*co;
+                                } else if(co > lo) {
+                                    app.moving = -38*(co-3);
                                 } else if (co == -2) {
                                     app.moving = 0;
                                 }
@@ -218,5 +225,7 @@ mdui.JQ("body").height(t + "px");
 mdui.JQ("#app").height(t*0.84 + "px");
 mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
 mdui.JQ(".result").height(t*0.4 + "px");
-var main_scroll = new IScroll('main');
+var main_scroll = new IScroll('main', {
+    preventDefault: true
+});
 app.player(app.getQueryString("id") || 38592976);

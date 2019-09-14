@@ -22,7 +22,7 @@
                         {{ name }} <small>- {{ artist }}</small>
                     </span>
                     <div class="mdui-toolbar-spacer"></div>
-                    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false}">
+                    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false, overlay: false}">
                         <i class="mdui-icon material-icons">search</i>
                     </button>
                 </div>
@@ -85,7 +85,7 @@
                     <i class="mdui-icon material-icons" v-if="volume > 0 && volume < 50">volume_mute</i>
                     <i class="mdui-icon material-icons" v-if="volume == 0">volume_off</i>
                 </button>
-                <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" mdui-dialog="{target: '#detail_box', history: false}" v-show="loading_done">
+                <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" mdui-dialog="{target: '#detail_box', history: false, overlay: false}" v-show="loading_done">
                     <i class="mdui-icon material-icons">more_vert</i>
                 </button>
                 <label class="mdui-slider mdui-center changetime">
