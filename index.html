@@ -22,7 +22,7 @@
                         {{ name }} <small>- {{ artist }}</small>
                     </span>
                     <div class="mdui-toolbar-spacer"></div>
-                    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false, overlay: false}">
+                    <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search_box', history: false, overlay: false, modal: true}">
                         <i class="mdui-icon material-icons">search</i>
                     </button>
                 </div>
@@ -32,42 +32,6 @@
                     <div class="lyric_box" v-for="(value, name, index) in lyric" :time="name">
                         <div class="lyric">{{ value }}</div>
                         <div class="tlyric" v-if="tlyric">{{ tlyric[name] }}</div>
-                    </div>
-                </div>
-                <div class="mdui-dialog s_dialog" id="search_box">
-                    <input type="text" placeholder="键入曲名，回车搜索" @keyup.enter="s_page = 1; search(s_text)" v-model="s_text" />
-                    <div class="mdui-spinner s_loading" v-show="s_loading"></div>
-                    <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
-                        <i class="mdui-icon material-icons">close</i>
-                    </button>
-                    <div class="result mdui-list" ref="s_result">
-                        <div class="mdui-list-item" v-if="s_data" v-for="item in s_data" @click="player(item.id)">
-                            <div class="mdui-list-item-content">
-                                <span>{{ item.name }}</span>
-                                <br />
-                                <small v-for="i in item.artists">[ {{ i.name }} ] </small>
-                            </div>
-                            <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
-                        </div>
-                        <button class="mdui-btn mdui-m-t-1 mdui-center" v-if="s_data" @click="search(s_text)">加载更多</button>
-                    </div>
-                </div>
-                <div class="mdui-dialog d_dialog" id="detail_box">
-                    <div class="d_title mdui-valign mdui-p-l-2">
-                        <div>详情</div>
-                        <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
-                            <i class="mdui-icon material-icons">close</i>
-                        </button>
-                    </div>
-                    <div class="d_detail mdui-p-y-1">
-                        <img class="mdui-center" :src="picurl" width="156" height="156" />
-                        <div class="mdui-center mdui-text-center">
-                            <p>（手机端长按保存图片，电脑端右键另存为）</p>
-                            <p>曲名：{{ name }}</p>
-                            <p>歌手：{{ artist }}</p>
-                            <p>专辑：{{ album }}</p>
-                            <button class="mdui-btn mdui-ripple" @click="window.open(url)">下载歌曲</button>
-                        </div>
                     </div>
                 </div>
                 <audio ref="player" :src="url" @canplay="canplay" @play="play('play')" @pause="playnow = false"></audio>
@@ -85,7 +49,7 @@
                     <i class="mdui-icon material-icons" v-if="volume > 0 && volume < 50">volume_mute</i>
                     <i class="mdui-icon material-icons" v-if="volume == 0">volume_off</i>
                 </button>
-                <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" mdui-dialog="{target: '#detail_box', history: false, overlay: false}" v-show="loading_done">
+                <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" mdui-dialog="{target: '#detail_box', history: false, overlay: false, model: true}" v-show="loading_done">
                     <i class="mdui-icon material-icons">more_vert</i>
                 </button>
                 <label class="mdui-slider mdui-center changetime">
@@ -106,10 +70,50 @@
             <transition name="fade">
                 <div class="bg-img" v-show="loading_done" :style="{ backgroundImage: 'url('+bgurl+')' }"></div>
             </transition>
+            <div class="mdui-dialog s_dialog" id="search_box">
+                <input type="text" placeholder="键入曲名，回车搜索" @keyup.enter="s_page = 1; search(s_text)" v-model="s_text" />
+                <div class="mdui-spinner s_loading" v-show="s_loading"></div>
+                <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
+                    <i class="mdui-icon material-icons">close</i>
+                </button>
+                <div class="s_result mdui-list" ref="s_result">
+                    <div>
+                        <div class="mdui-list-item" v-if="s_data" v-for="item in s_data" @click="player(item.id)">
+                            <div class="mdui-list-item-content">
+                                <span>{{ item.name }}</span>
+                                <br />
+                                <small v-for="i in item.artists">[ {{ i.name }} ] </small>
+                            </div>
+                            <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
+                        </div>
+                        <button class="mdui-btn mdui-m-t-1 mdui-center" v-if="s_data" @click="search(s_text)">加载更多</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mdui-dialog d_dialog" id="detail_box">
+                <div class="d_title mdui-valign mdui-p-l-2">
+                    <div>详情</div>
+                    <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
+                        <i class="mdui-icon material-icons">close</i>
+                    </button>
+                </div>
+                <div class="d_detail mdui-p-y-1">
+                    <div>
+                        <img class="mdui-center" :src="picurl" width="156" height="156" />
+                        <div class="mdui-center mdui-text-center">
+                            <p>（手机端长按保存图片，电脑端右键另存为）</p>
+                            <p>曲名：{{ name }}</p>
+                            <p>歌手：{{ artist }}</p>
+                            <p>专辑：{{ album }}</p>
+                            <button class="mdui-btn mdui-ripple" @click="window.open(url)">下载歌曲</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script src="./js/mdui@0.4.3.min.js"></script>
         <script src="./js/vue@2.6.10.min.js"></script>
-        <script src="./js/iscroll-lite@5.2.0.min.js"></script>
+        <script src="./js/iscroll@5.2.0.min.js"></script>
         <script src="./js/app.js"></script>
     </body>
 </html>

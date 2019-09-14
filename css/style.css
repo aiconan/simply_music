@@ -89,9 +89,6 @@ main {
     min-width: 48px;
     height: 48px;
 }
-.S_dialog {
-    z-index: 9999;
-}
 .s_dialog input {
     height: 48px;
     width: 100%;
@@ -105,8 +102,9 @@ main {
     border-radius: 0;
     outline: 0;
 }
-.s_dialog .result {
-    overflow-y: overlay;
+.s_dialog .s_result {
+    overflow: hidden;
+    touch-action: none;
 }
 .s_dialog .mdui-btn-dense {
     position: absolute;
@@ -140,7 +138,8 @@ main {
 }
 .d_dialog .d_detail {
     height: 40vh;
-    overflow-y: auto;
+    overflow: hidden;
+    touch-action: none;
 }
 .s_dialog, .d_dialog {
     top: 10px!important;
