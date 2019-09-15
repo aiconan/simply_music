@@ -228,8 +228,7 @@ mdui.JQ("#app").height(t*0.84 + "px");
 mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
 mdui.JQ(".s_result").height(t*0.4 + "px");
 var scroll = {
-    mouseWheel: true,
-    click: false
+    mouseWheel: true
 };
 var main_scroll = new IScroll("main", scroll);
 var s_scroll = new IScroll(".s_result", scroll);
