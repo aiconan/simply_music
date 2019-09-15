@@ -223,16 +223,18 @@ var app = new Vue({
     },
 });
 
-var t = mdui.JQ(window).height();
-var r = mdui.JQ("header").height();
-mdui.JQ("body").height(t + "px");
-mdui.JQ("#app").height(t*0.84 + "px");
-mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
-mdui.JQ(".s_result").height(t*0.4 + "px");
-var scroll = {
-    mouseWheel: true,
-    click: false
-};
-var main_scroll = new IScroll("main", scroll);
-var s_scroll = new IScroll(".s_result", scroll);
-app.player(app.getQueryString("id") || 38592976);
+mdui.JQ(function(){
+    var t = mdui.JQ(window).height();
+    var r = mdui.JQ("header").height();
+    mdui.JQ("body").height(t + "px");
+    mdui.JQ("#app").height(t*0.84 + "px");
+    mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
+    mdui.JQ(".s_result").height(t*0.4 + "px");
+    var scroll = {
+        mouseWheel: true,
+        click: false
+    };
+    main_scroll = new IScroll("main", scroll);
+    s_scroll = new IScroll(".s_result", scroll);
+    app.player(app.getQueryString("id") || 38592976);
+})
