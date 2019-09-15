@@ -48,6 +48,7 @@ var app = new Vue({
                     setTimeout(() => {
                         s_scroll.refresh();
                     }, 0);
+                    s_scroll.scrollTo(0, 0, 300);
                 }
             })
         },
@@ -61,6 +62,7 @@ var app = new Vue({
                 beforeSend: function() {
                     if (id == app.id) return false;
                     app.lyric = ["","","","加载中，请稍候……"];
+                    app.tlyric = null;
                     app.loading_done = false;
                 },
                 success: function(data) {
@@ -116,27 +118,27 @@ var app = new Vue({
                         app.play("play");
                     }
                     for (name in app.lyric) {
-                        if (name == app.currentTime) {
+                        if (name <= app.currentTime) {
                             mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
                             mdui.JQ("div[time = '" + name + "']").addClass("show");
                             if (app.tlyric) {
-                                var lo = mdui.JQ(".info_lyric>div").length - 4;
+                                var lo = mdui.JQ(".info_lyric>div").length - 5;
                                 var co = mdui.JQ("div[time='"+name+"']").index() - 2;
                                 if(co > 0 && co < lo) {
                                     app.moving = -56*co;
-                                } else if(co > lo) {
-                                    app.moving = -56*(co-2);
+                                } else if(co > lo-1) {
+                                    app.moving = -56*lo+10;
                                 } else if(co == -2) {
                                     app.moving = 0;
                                 }
                             } else {
-                                var lo = mdui.JQ(".info_lyric>div").length - 6;
+                                var lo = mdui.JQ(".info_lyric>div").length - 8;
                                 var co = mdui.JQ("div[time='"+name+"']").index() - 3;
                                 if(co > 0 && co < lo) {
                                     app.moving = -38*co;
-                                } else if(co > lo) {
-                                    app.moving = -38*(co-3);
-                                } else if (co == -2) {
+                                } else if(co > lo-1) {
+                                    app.moving = -38.18*lo+10;
+                                } else if (co == -3) {
                                     app.moving = 0;
                                 }
                             }
