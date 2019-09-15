@@ -89,9 +89,6 @@ var app = new Vue({
                     app.playnow = false;
                     app.$refs.player.load();
                     mdui.updateSliders();
-                    setTimeout(() => {
-                        d_scroll.refresh();
-                    }, 0);
                     mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
                     app.loading_done = true;
                 }
@@ -231,9 +228,9 @@ mdui.JQ("#app").height(t*0.84 + "px");
 mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
 mdui.JQ(".s_result").height(t*0.4 + "px");
 var scroll = {
-    mouseWheel: true
+    mouseWheel: true,
+    click: false
 };
 var main_scroll = new IScroll("main", scroll);
 var s_scroll = new IScroll(".s_result", scroll);
-var d_scroll = new IScroll(".d_detail", scroll);
 app.player(app.getQueryString("id") || 38592976);

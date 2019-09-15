@@ -102,10 +102,6 @@ main {
     border-radius: 0;
     outline: 0;
 }
-.s_dialog .s_result {
-    overflow: hidden;
-    touch-action: none;
-}
 .s_dialog .mdui-btn-dense {
     position: absolute;
     right: 16px;
@@ -136,8 +132,7 @@ main {
     position: absolute;
     right: 16px;
 }
-.d_dialog .d_detail {
-    height: 40vh;
+.s_dialog .s_result, .d_dialog .d_detail {
     overflow: hidden;
     touch-action: none;
 }
