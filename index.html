@@ -45,9 +45,9 @@
                     </label>
                 </transition>
                 <button class="mdui-btn mdui-btn-icon mdui-btn-dense set_volume" @click="set_volume = !set_volume">
-                    <i class="mdui-icon material-icons" v-if="volume == 100">volume_up</i>
-                    <i class="mdui-icon material-icons" v-if="volume >= 50 && volume < 100">volume_down</i>
-                    <i class="mdui-icon material-icons" v-if="volume > 0 && volume < 50">volume_mute</i>
+                    <i class="mdui-icon material-icons" v-if="volume >= 80">volume_up</i>
+                    <i class="mdui-icon material-icons" v-if="volume >= 40 && volume < 80">volume_down</i>
+                    <i class="mdui-icon material-icons" v-if="volume > 0 && volume < 40">volume_mute</i>
                     <i class="mdui-icon material-icons" v-if="volume == 0">volume_off</i>
                 </button>
                 <button class="mdui-btn mdui-btn-icon mdui-btn-dense mdui-float-right" 
@@ -90,6 +90,7 @@
                             <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
                         </div>
                         <button class="mdui-btn mdui-m-t-1 mdui-center" v-if="s_data" @click="search(s_text)">加载更多</button>
+                        <br />
                     </div>
                 </div>
             </div>
