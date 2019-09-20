@@ -25,6 +25,9 @@ var app = new Vue({
         s_text: '',
         s_page: 1
     },
+    updated: function(){
+        mdui.updateSliders();
+    },
     methods: {
         search: function(text){
             if (!text) {
@@ -91,7 +94,7 @@ var app = new Vue({
                     app.$refs.player.pause();
                     app.playnow = false;
                     app.$refs.player.load();
-                    mdui.updateSliders();
+                    //mdui.updateSliders();
                     mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
                     app.loading_done = true;
                 }
@@ -103,17 +106,17 @@ var app = new Vue({
             if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) !== "micromessenger") {
                 history.pushState(null, null, '?id='+this.id);
             }
-            setTimeout("mdui.updateSliders()", 1000);
+            //setTimeout("mdui.updateSliders()", 1000);
         },
         play: function(t){
             if (app.$refs.player.paused || t =="play") {
                 app.$refs.player.play();
                 app.playnow = true;
                 this.alltime = parseInt(app.$refs.player.duration);
-                mdui.updateSliders(".changetime");
+                //mdui.updateSliders(".changetime");
                 app.$refs.player.ontimeupdate = function() {
                     app.currentTime =  Math.round(app.$refs.player.currentTime);
-                    mdui.updateSliders(".changetime");
+                    //mdui.updateSliders(".changetime");
                     if(parseInt(app.$refs.player.currentTime) == app.alltime) {
                         app.$refs.player.currentTime = 0;
                         app.play("play");
@@ -159,7 +162,7 @@ var app = new Vue({
         },
         change: function(value){
             this.$refs.player.currentTime = value;
-            mdui.updateSliders();
+            //mdui.updateSliders();
         },
         getlyric: function(id){
             mdui.JQ.ajax({

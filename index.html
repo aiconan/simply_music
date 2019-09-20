@@ -89,7 +89,10 @@
                             </div>
                             <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
                         </div>
-                        <button class="mdui-btn mdui-m-t-1 mdui-center" v-if="s_data" @click="search(s_text)">加载更多</button>
+                        <div class="mdui-text-center" v-if="s_data">
+                            <button class="mdui-btn mdui-m-t-1 mdui-m-r-1" :disabled="s_loading || s_page==2" @click="s_page-=2; search(s_text)">上一页</button>
+                            <button class="mdui-btn mdui-m-t-1" :disabled="s_loading" @click="search(s_text)">下一页</button>
+                        </div>
                         <br />
                     </div>
                 </div>
