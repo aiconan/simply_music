@@ -11,10 +11,11 @@ var app = new Vue({
         picurl: null,
         bgurl: null,
         lyric: ["","","","加载中，请稍候……"],
+        none_lyric: ["","","","纯音乐，供您欣赏"],
         tlyric: null,
         playnow: false,
         loading_done: false,
-        moving: 0,
+        moving: -0,
         currentTime: 0,
         alltime: 0,
         set_volume: false,
@@ -117,32 +118,37 @@ var app = new Vue({
                         app.$refs.player.currentTime = 0;
                         app.play("play");
                     }
-                    for (name in app.lyric) {
-                        if (name <= app.currentTime) {
-                            mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
-                            mdui.JQ("div[time = '" + name + "']").addClass("show");
-                            if (app.tlyric) {
-                                var lo = mdui.JQ(".info_lyric>div").length - 5;
-                                var co = mdui.JQ("div[time='"+name+"']").index() - 2;
-                                if(co > 0 && co < lo) {
-                                    app.moving = -56*co;
-                                } else if(co > lo-1) {
-                                    app.moving = -56*lo+10;
-                                } else if(co == -2) {
-                                    app.moving = 0;
+                    if(app.lyric && app.tlyric !== app.none_lyric) {
+                        for (name in app.lyric) {
+                            if (name <= app.currentTime) {
+                                mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
+                                mdui.JQ("div[time = '" + name + "']").addClass("show");
+                                if (app.tlyric) {
+                                    var lo = mdui.JQ(".info_lyric>div").length - 5;
+                                    var co = mdui.JQ("div[time='"+name+"']").index() - 2;
+                                    if(co > 0 && co < lo) {
+                                        t = -56*co;
+                                    } else if(co > lo-1) {
+                                        t = -56*lo+10;
+                                    } else if(co == -2) {
+                                        t = 0;
+                                    }
+                                } else {
+                                    var lo = mdui.JQ(".info_lyric>div").length - 8;
+                                    var co = mdui.JQ("div[time='"+name+"']").index() - 3;
+                                    if(co > 0 && co < lo) {
+                                        t = -38*co;
+                                    } else if(co > lo-1) {
+                                        t = -38.18*lo+10;
+                                    } else if (co == -3) {
+                                        t = 0;
+                                    }
                                 }
-                            } else {
-                                var lo = mdui.JQ(".info_lyric>div").length - 8;
-                                var co = mdui.JQ("div[time='"+name+"']").index() - 3;
-                                if(co > 0 && co < lo) {
-                                    app.moving = -38*co;
-                                } else if(co > lo-1) {
-                                    app.moving = -38.18*lo+10;
-                                } else if (co == -3) {
-                                    app.moving = 0;
+                                if(t !== app.moving) {
+                                    app.moving = t;
+                                    main_scroll.scrollTo(0, app.moving, 300);
                                 }
                             }
-                            main_scroll.scrollTo(0, app.moving, 300);
                         }
                     }
                 }
@@ -164,7 +170,7 @@ var app = new Vue({
                 success: function(data) {
                     var data = JSON.parse(data);
                     if (data.nolyric === true) {
-                        app.lyric = ["","","","纯音乐，供您欣赏"];
+                        app.lyric = app.none_lyric;
                     } else {
                         app.lyric = app.parseLyric(data.lrc.lyric);
                     }
