@@ -139,6 +139,17 @@ main {
 .s_dialog, .d_dialog {
     top: 8px!important;
 }
+@media screen and (max-width: 600px) {
+    .s_dialog, .d_dialog {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0!important;
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+    }
+}
 footer {
     position: absolute;
     bottom: 8px;
