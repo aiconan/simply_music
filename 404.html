@@ -8,8 +8,31 @@
 			display: flex;
 			align-items: center;
 			height: 100%;
-			background-color: #05abec;
-		}
+            background-color: #05abec;
+            animation: bg-color 10s infinite;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none; 
+             user-select: none;
+        }
+        @keyframes bg-color {
+            0% {
+                background-color: #05abec;
+            }
+            25% {
+                background-color: #64B5F6;
+            }
+            50% { 
+                background-color: #509AF1; 
+            }
+            75% { 
+                background-color: #42A5F5; 
+            }
+            100% { 
+                background-color: #05abec; 
+            }
+}
 		@keyframes opacity-keyframe {
 			0%,74.72706% {
 				opacity:1;
