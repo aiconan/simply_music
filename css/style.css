@@ -137,7 +137,7 @@ main {
     touch-action: none;
 }
 .s_dialog, .d_dialog {
-    top: 10px!important;
+    top: 8px!important;
 }
 footer {
     position: absolute;
