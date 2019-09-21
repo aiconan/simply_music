@@ -102,9 +102,10 @@ var app = new Vue({
         },
         canplay: function(){
             this.alltime = parseInt(this.$refs.player.duration);
-            document.title = "▶ " +this.name+" - "+this.artist;
+            var t = this.name+" - "+this.artist;
+            document.title = "▶ " +t;
             if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) !== "micromessenger") {
-                history.pushState(null, null, '?id='+this.id);
+                history.pushState(null, this.name+" - "+t, '?id='+this.id);
             }
             //setTimeout("mdui.updateSliders()", 1000);
         },
