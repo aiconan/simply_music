@@ -1,51 +1,312 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <title>404 Not Found</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-  <style type="text/css">
-    ::-webkit-scrollbar { width: 1px!important; }
-    html { height: 100%; width: 100%; }
-    body { background-color: #00abec; height: 100%; margin: 0; display: flex; align-items: center; }
-    #feature { width: 80%; margin: 0 auto; overflow: auto; }     
-    #content { font-family: "Segoe UI"; font-weight: normal; font-size: 26px; color: #ffffff; float: left; width: 460px; margin-left: 0px; vertical-align: middle; }
-    #content h1 { font-family: "Segoe UI Light"; color: #ffffff; font-weight: normal; font-size: 60px; width: 800px; }
-    p a, p a:visited, p a:active, p a:hover { color: #ffffff; }
-    #content a.button { background: #0DBCF2; border: 1px solid #FFFFFF; color: #FFFFFF; display: inline-block; font-family: Segoe UI; font-size: 24px; line-height: 46px; margin-top: 10px; padding: 0 15px 3px; text-decoration: none; }
-    #content a.button img { float: right; padding: 10px 0 0 15px; }    
-    #content a.button:hover { background: #1C75BC; }
-  </style>
+	<title>404 Not Found 1!!</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+	<style>
+		body {
+			margin: 0;
+			display: flex;
+			align-items: center;
+			height: 100%;
+			background-color: #05abec;
+		}
+		@keyframes opacity-keyframe {
+			0%,74.72706% {
+				opacity:1;
+				animation-timing-function:step-start
+			}
+			74.75029%,100% {
+				opacity:0;
+				animation-timing-function:step-start
+			}
+		}
+		#app {
+			margin: 0 auto;
+		}
+		.loader {
+			margin: 0 auto;
+			position: relative;
+			width: 36px;
+			height: 36px;
+		}
+		p {
+			color: #FFFFFF;
+			margin: 8px auto;
+			font-size: 18px;
+			text-align: center;
+		}
+		.box {
+			position:absolute;
+			width:36px;
+			height:36px;
+			opacity:0;
+			animation-name:opacity-keyframe;
+			animation-iteration-count:infinite;
+			animation-duration:4.305s
+		}
+		.circle {
+			position:absolute;
+			width:36px;
+			height:36px;
+			transform:rotate(225deg);
+			animation-iteration-count:infinite;
+			animation-duration:4.305s
+		}
+		.circle:after {
+			content:'';
+			position:absolute;
+			width:5px;
+			height:5px;
+			border-radius:100%;
+			background:#FFFFFF
+		}
+		@keyframes e1r {
+			0% {
+				animation-timing-function:cubic-bezier(.02,.33,.38,.77);
+				transform:rotate(-110deg)
+			}
+			10.05807% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(10deg)
+			}
+			27.87456% {
+				animation-timing-function:cubic-bezier(.57,.17,.95,.75);
+				transform:rotate(93deg)
+			}
+			37.56098% {
+				animation-timing-function:cubic-bezier(0,.19,.07,.72);
+				transform:rotate(205deg)
+			}
+			46.8525% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(357deg)
+			}
+			64.64576% {
+				animation-timing-function:cubic-bezier(0,0,.95,.37);
+				transform:rotate(439deg)
+			}
+			74.72706%,100% {
+				transform:rotate(585deg);
+				animation-timing-function:cubic-bezier(.13,.21,.1,.7)
+			}
+		}
+		.box:nth-child(1) {
+			animation-delay:0ms;
+		}
+		.box:nth-child(1) .circle {
+			animation-name:e1r;
+			animation-delay:0ms;
+		}
+		@keyframes e2r {
+			0% {
+				animation-timing-function:cubic-bezier(.02,.33,.38,.77);
+				transform:rotate(-116deg)
+			}
+			10.05807% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(4deg)
+			}
+			27.87456% {
+				animation-timing-function:cubic-bezier(.57,.17,.95,.75);
+				transform:rotate(87deg)
+			}
+			37.56098% {
+				animation-timing-function:cubic-bezier(0,.19,.07,.72);
+				transform:rotate(199deg)
+			}
+			46.8525% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(351deg)
+			}
+			64.64576% {
+				animation-timing-function:cubic-bezier(0,0,.95,.37);
+				transform:rotate(433deg)
+			}
+			74.72706%,100% {
+				transform:rotate(579deg);
+				animation-timing-function:cubic-bezier(.13,.21,.1,.7)
+			}
+		}
+		.box:nth-child(2) {
+			animation-delay:167ms
+		}
+		.box:nth-child(2) .circle {
+			animation-name:e2r;
+			animation-delay:167ms
+		}
+		@keyframes e3r {
+			0% {
+				animation-timing-function:cubic-bezier(.02,.33,.38,.77);
+				transform:rotate(-122deg)
+			}
+			10.05807% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(-2deg)
+			}
+			27.87456% {
+				animation-timing-function:cubic-bezier(.57,.17,.95,.75);
+				transform:rotate(81deg)
+			}
+			37.56098% {
+				animation-timing-function:cubic-bezier(0,.19,.07,.72);
+				transform:rotate(193deg)
+			}
+			46.8525% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(345deg)
+			}
+			64.64576% {
+				animation-timing-function:cubic-bezier(0,0,.95,.37);
+				transform:rotate(427deg)
+			}
+			74.72706%,100% {
+				transform:rotate(573deg);
+				animation-timing-function:cubic-bezier(.13,.21,.1,.7)
+			}
+		}
+		.box:nth-child(3) {
+			animation-delay:334ms
+		}
+		.box:nth-child(3) .circle {
+			animation-name:e3r;
+			animation-delay:334ms
+		}
+		@keyframes e4r {
+			0% {
+				animation-timing-function:cubic-bezier(.02,.33,.38,.77);
+				transform:rotate(-128deg)
+			}
+			10.05807% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(-8deg)
+			}
+			27.87456% {
+				animation-timing-function:cubic-bezier(.57,.17,.95,.75);
+				transform:rotate(75deg)
+			}
+			37.56098% {
+				animation-timing-function:cubic-bezier(0,.19,.07,.72);
+				transform:rotate(187deg)
+			}
+			46.8525% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(339deg)
+			}
+			64.64576% {
+				animation-timing-function:cubic-bezier(0,0,.95,.37);
+				transform:rotate(421deg)
+			}
+			74.72706%,100% {
+				transform:rotate(567deg);
+				animation-timing-function:cubic-bezier(.13,.21,.1,.7)
+			}
+		}
+		.box:nth-child(4) {
+			animation-delay:501ms
+		}
+		.box:nth-child(4) .circle {
+			animation-name:e4r;
+			animation-delay:501ms
+		}
+		@keyframes e5r {
+			0% {
+				animation-timing-function:cubic-bezier(.02,.33,.38,.77);
+				transform:rotate(-134deg)
+			}
+			10.05807% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(-14deg)
+			}
+			27.87456% {
+				animation-timing-function:cubic-bezier(.57,.17,.95,.75);
+				transform:rotate(69deg)
+			}
+			37.56098% {
+				animation-timing-function:cubic-bezier(0,.19,.07,.72);
+				transform:rotate(181deg)
+			}
+			46.8525% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(333deg)
+			}
+			64.64576% {
+				animation-timing-function:cubic-bezier(0,0,.95,.37);
+				transform:rotate(415deg)
+			}
+			74.72706%,100% {
+				transform:rotate(561deg);
+				animation-timing-function:cubic-bezier(.13,.21,.1,.7)
+			}
+		}
+		.box:nth-child(5) {
+			animation-delay:668ms
+		}
+		.box:nth-child(5) .circle {
+			animation-name:e5r;
+			animation-delay:668ms
+		}
+		@keyframes e6r {
+			0% {
+				animation-timing-function:cubic-bezier(.02,.33,.38,.77);
+				transform:rotate(-140deg)
+			}
+			10.05807% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(-20deg)
+			}
+			27.87456% {
+				animation-timing-function:cubic-bezier(.57,.17,.95,.75);
+				transform:rotate(63deg)
+			}
+			37.56098% {
+				animation-timing-function:cubic-bezier(0,.19,.07,.72);
+				transform:rotate(175deg)
+			}
+			46.8525% {
+				animation-timing-function:cubic-bezier(0,0,1,1);
+				transform:rotate(327deg)
+			}
+			64.64576% {
+				animation-timing-function:cubic-bezier(0,0,.95,.37);
+				transform:rotate(409deg)
+			}
+			74.72706%,100% {
+				transform:rotate(555deg);
+				animation-timing-function:cubic-bezier(.13,.21,.1,.7)
+			}
+		}
+		.box:nth-child(6) {
+			animation-delay:835ms
+		}
+		.box:nth-child(6) .circle {
+			animation-name:e6r;
+			animation-delay:835ms
+		}
+	</style>
 </head>
-<body onload="e()">
-  <div id="feature">
-    <div id="content">
-      <h1 id="siteCreated">错误 404 – 无法找到您请求的页面！ </h1>
-      <p id="goDo">当前页面不可用</p>
-    </div>
-  </div>
-  <script type="text/javascript">
-    function e() {
-        var browserLanguage = (navigator.language) ? navigator.language : navigator.userLanguage;
-
-        var h, p;
-
-        switch (browserLanguage.toLowerCase()) {
-            case "en-us":
-                h = "Error 404 - Web Site not found!";
-                p = "The site you have attempted to reach is not available.";
-                break;
-            case "zh-cn":
-                h = "错误 404 – 无法找到您请求的页面！ ";
-                p = "当前页面不可用";
-                break;
-            default:
-                h = "Error 404 - Web Site not found!";
-                p = "The site you have attempted to reach is not available.";
-        }
-
-        document.getElementById("siteCreated").innerHTML = h;
-        document.getElementById("goDo").innerHTML = p;
-    }
-</script>
+<body>
+	<div id="app">
+		<div class="loader">
+			<div class="box">
+				<div class="circle"></div>
+			</div>
+			<div class="box">
+				<div class="circle"></div>
+			</div>
+			<div class="box">
+				<div class="circle"></div>
+			</div>
+			<div class="box">
+				<div class="circle"></div>
+			</div>
+			<div class="box">
+				<div class="circle"></div>
+			</div>
+			<div class="box">
+				<div class="circle"></div>
+			</div>
+		</div>
+		<p>相见时难别亦难，东风无力百花残</p>
+	</div>
 </body>
 </html>
