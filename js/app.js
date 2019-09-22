@@ -238,7 +238,7 @@ var app = new Vue({
     },
 });
 
-mdui.JQ(function(){
+window.onload = function(){
     var t = mdui.JQ(window).height();
     var r = mdui.JQ("header").height();
     mdui.JQ("body").height(t + "px");
@@ -253,4 +253,4 @@ mdui.JQ(function(){
     mdui.JQ(".loading_page").remove();
     mdui.JQ("#app").show();
     app.player(app.getQueryString("id") || 38592976);
-});
+};

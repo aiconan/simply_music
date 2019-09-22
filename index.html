@@ -61,7 +61,7 @@
                         <div class="tlyric" v-if="tlyric">{{ tlyric[name] }}</div>
                     </div>
                 </div>
-                <audio ref="player" :src="url" @canplay="canplay" @play="play('play')" @pause="playnow = false"></audio>
+                <audio ref="player" :src="url" @canplay="canplay" @play="play('play')" @pause="playnow = false" autoplay></audio>
             </main>
             <footer class="mdui-container">
                 <button class="btn-ph"></button>
