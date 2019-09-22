@@ -105,22 +105,24 @@
                 <button class="mdui-btn mdui-btn-icon mdui-btn-dense" mdui-dialog-close>
                     <i class="mdui-icon material-icons">close</i>
                 </button>
-                <div class="s_result mdui-list" ref="s_result" v-show="s_data">
-                    <div>
-                        <div class="mdui-list-item" v-if="s_data" v-for="item in s_data" @click="player(item.id)">
-                            <div class="mdui-list-item-content">
-                                <span>{{ item.name }}</span>
-                                <br />
-                                <small v-for="i in item.artists">[ {{ i.name }} ] </small>
+                <transition name="slide-fade">
+                    <div class="s_result mdui-list" ref="s_result" v-show="s_data">
+                        <div>
+                            <div class="mdui-list-item" v-if="s_data" v-for="item in s_data" @click="player(item.id)">
+                                <div class="mdui-list-item-content">
+                                    <span>{{ item.name }}</span>
+                                    <br />
+                                    <small v-for="i in item.artists">[ {{ i.name }} ] </small>
+                                </div>
+                                <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
                             </div>
-                            <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
-                        </div>
-                        <div class="mdui-text-center" v-if="s_data">
-                            <button class="mdui-btn mdui-m-t-1 mdui-m-r-1" :disabled="s_loading || s_page==2" @click="s_page-=2; search(s_text)">上一页</button>
-                            <button class="mdui-btn mdui-m-t-1" :disabled="s_loading" @click="search(s_text)">下一页</button>
+                            <div class="mdui-text-center" v-if="s_data">
+                                <button class="mdui-btn mdui-m-t-1 mdui-m-r-1" :disabled="s_loading || s_page==2" @click="s_page-=2; search(s_text)">上一页</button>
+                                <button class="mdui-btn mdui-m-t-1" :disabled="s_loading" @click="search(s_text)">下一页</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </transition>
             </div>
             <div class="mdui-dialog d_dialog" id="detail_box">
                 <div class="d_title mdui-valign mdui-p-l-2">
