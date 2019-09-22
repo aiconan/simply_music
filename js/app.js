@@ -50,9 +50,9 @@ var app = new Vue({
                     app.s_data = JSON.parse(data).result.songs;
                     app.s_page += 1;
                     setTimeout(() => {
-                        s_scroll.refresh();
+                        var s_dialog = new mdui.Dialog('s_dialog');
+                        s_dialog.handleUpdate();
                     }, 0);
-                    s_scroll.scrollTo(0, 0, 300);
                 }
             })
         },
@@ -239,13 +239,12 @@ mdui.JQ(function(){
     mdui.JQ("body").height(t + "px");
     mdui.JQ("#app").height(t*0.84 + "px");
     mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
-    mdui.JQ(".s_result").height(t*0.4 + "px");
+    //mdui.JQ(".s_result").height(t*0.4 + "px");
     var scroll = {
         mouseWheel: true,
         click: false
     };
     main_scroll = new IScroll("main", scroll);
-    s_scroll = new IScroll(".s_result", scroll);
     mdui.JQ(".loading_page").remove();
     mdui.JQ("#app").show();
     app.player(app.getQueryString("id") || 38592976);
