@@ -12,10 +12,36 @@
         <link rel="apple-touch-icon" href="./favicon.ico">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
         <link rel="stylesheet" href="./css/mdui@0.4.3.min.css" />
+        <link rel="stylesheet" href="./css/loading_page.css" />
         <link rel="stylesheet" href="./css/style.css" />
     </head>
     <body class="mdui-theme-accent-green">
-        <div id="app" class="mdui-valign">
+        <div class="loading_page">
+            <div class="loading_box">
+                <div class="loader">
+                    <div class="box">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="box">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="box">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="box">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="box">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="box">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <p>正在加载</p>
+            </div>
+        </div>
+        <div id="app" class="mdui-valign" style="display:none!important">
             <header class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed">
                 <div class="mdui-toolbar">
                     <span class="mdui-typo-title" v-show="name && artist">
