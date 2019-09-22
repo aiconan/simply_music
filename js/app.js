@@ -246,7 +246,7 @@ mdui.JQ(function(){
     };
     main_scroll = new IScroll("main", scroll);
     s_scroll = new IScroll(".s_result", scroll);
-    app.player(app.getQueryString("id") || 38592976);
     mdui.JQ(".loading_page").remove();
     mdui.JQ("#app").show();
+    app.player(app.getQueryString("id") || 38592976);
 });
