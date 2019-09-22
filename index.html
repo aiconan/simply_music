@@ -106,9 +106,9 @@
                     <i class="mdui-icon material-icons">close</i>
                 </button>
                 <transition name="slide-fade">
-                    <div class="s_result mdui-list" ref="s_result" v-show="s_data">
+                    <div class="s_result mdui-list" ref="s_result" v-if="s_data">
                         <div>
-                            <div class="mdui-list-item" v-if="s_data" v-for="item in s_data" @click="player(item.id)">
+                            <div class="mdui-list-item" v-for="item in s_data" @click="player(item.id)">
                                 <div class="mdui-list-item-content">
                                     <span>{{ item.name }}</span>
                                     <br />
@@ -116,7 +116,7 @@
                                 </div>
                                 <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
                             </div>
-                            <div class="mdui-text-center" v-if="s_data">
+                            <div class="mdui-text-center">
                                 <button class="mdui-btn mdui-m-t-1 mdui-m-r-1" :disabled="s_loading || s_page==2" @click="s_page-=2; search(s_text)">上一页</button>
                                 <button class="mdui-btn mdui-m-t-1" :disabled="s_loading" @click="search(s_text)">下一页</button>
                             </div>

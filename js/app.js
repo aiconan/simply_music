@@ -44,6 +44,11 @@ var app = new Vue({
                 method: "GET",
                 beforeSend: function(){
                     app.s_loading = true;
+                    app.s_data = false;
+                    setTimeout(() => {
+                        var s_dialog = new mdui.Dialog('s_dialog');
+                        s_dialog.handleUpdate();
+                    }, 0);
                 },
                 success: function(data){
                     app.s_loading = false;
