@@ -1,6 +1,12 @@
 ::-webkit-scrollbar {
     width: 0px!important;
 }
+::selection{
+    background: transparent;
+}
+​​​​​​​::-moz-selection{
+    background: transparent;
+}
 body {
     position: fixed;
     background-color: #EEEEEE; 
