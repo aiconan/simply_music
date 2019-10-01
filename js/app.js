@@ -34,10 +34,7 @@ mdui.JQ(function(){
             s_dialog.handleUpdate();
         },
         mounted: function(){
-            var t = mdui.JQ(window).height();
             //var r = mdui.JQ("header").height();
-            mdui.JQ("body").height(t + "px");
-            mdui.JQ("#app").height(t*0.84 + "px");
             //mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
             var scroll = {
                 mouseWheel: true,
