@@ -30,6 +30,8 @@ mdui.JQ(function(){
         updated: function(){
             mdui.updateSliders();
             mdui.mutation();
+            var s_dialog = new mdui.Dialog('s_dialog');
+            s_dialog.handleUpdate();
         },
         mounted: function(){
             var t = mdui.JQ(window).height();
@@ -49,7 +51,6 @@ mdui.JQ(function(){
         methods: {
             search: function(text){
                 if (!text) return false;
-                var s_dialog = new mdui.Dialog('s_dialog');
                 mdui.JQ.ajax({
                     url: this.api + "search",
                     data: {
@@ -62,17 +63,11 @@ mdui.JQ(function(){
                     beforeSend: function(){
                         app.s_loading = true;
                         app.s_data = false;
-                        setTimeout(() => {
-                            s_dialog.handleUpdate();
-                        }, 0);
                     },
                     success: function(data){
                         app.s_loading = false;
                         app.s_data = JSON.parse(data).result.songs;
                         app.s_page += 1;
-                        setTimeout(() => {
-                            s_dialog.handleUpdate();
-                        }, 0);
                     }
                 })
             },

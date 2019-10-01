@@ -135,6 +135,13 @@ main {
     font-size: 16px;
     border-bottom: 1px solid rgba(0,0,0,.12);
 }
+.d_dialog .imgbox {
+    width: 156px;
+    height: 156px;
+    border-radius: 2px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
 .d_title button {
     position: absolute;
     right: 16px;
