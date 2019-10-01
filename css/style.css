@@ -122,7 +122,14 @@ main {
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 14px;
-} 
+}
+.s_dialog .s_s_loading {
+    width: 24px;
+    height: 24px;
+}
+.s_s_loading .mdui-spinner-circle {
+    border-width: 2px;
+}
 .d_dialog .d_title {
     height: 48px;
     font-size: 16px;

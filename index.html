@@ -114,7 +114,8 @@
                                     <br />
                                     <small v-for="i in item.artists">[ {{ i.name }} ] </small>
                                 </div>
-                                <i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i>
+                                <div class="mdui-spinner s_s_loading" v-if="item.id == s_id"></div>
+                                <i class="mdui-list-item-icon mdui-icon material-icons" v-if="item.id !== s_id">play_circle_outline</i>
                             </div>
                             <div class="mdui-text-center">
                                 <button class="mdui-btn mdui-m-t-1 mdui-m-r-1" :disabled="s_loading || s_page==2" @click="s_page-=2; search(s_text)">上一页</button>

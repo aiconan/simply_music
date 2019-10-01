@@ -22,12 +22,14 @@ mdui.JQ(function(){
             set_volume: false,
             volume: 100,
             s_loading: false,
+            s_id: false,
             s_data: null,
             s_text: '',
             s_page: 1
         },
         updated: function(){
             mdui.updateSliders();
+            mdui.mutation();
         },
         mounted: function(){
             var t = mdui.JQ(window).height();
@@ -79,6 +81,7 @@ mdui.JQ(function(){
                 this.lyric = ["","","","加载中，请稍候……"];
                 this.tlyric = null;
                 this.loading_done = false;
+                this.s_id = id; 
                 mdui.JQ.ajax({
                     url: this.api + "song/detail",
                     data: {
@@ -112,6 +115,7 @@ mdui.JQ(function(){
                         app.$refs.player.load();
                         mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
                         app.loading_done = true;
+                        app.s_id = false;
                     }
                 })
             },
