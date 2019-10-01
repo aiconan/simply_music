@@ -31,10 +31,10 @@ mdui.JQ(function(){
         },
         mounted: function(){
             var t = mdui.JQ(window).height();
-            var r = mdui.JQ("header").height();
+            //var r = mdui.JQ("header").height();
             mdui.JQ("body").height(t + "px");
             mdui.JQ("#app").height(t*0.84 + "px");
-            mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
+            //mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
             var scroll = {
                 mouseWheel: true,
                 click: false
@@ -46,9 +46,8 @@ mdui.JQ(function(){
         },
         methods: {
             search: function(text){
-                if (!text) {
-                    return false;
-                }
+                if (!text) return false;
+                var s_dialog = new mdui.Dialog('s_dialog');
                 mdui.JQ.ajax({
                     url: this.api + "search",
                     data: {
@@ -62,7 +61,6 @@ mdui.JQ(function(){
                         app.s_loading = true;
                         app.s_data = false;
                         setTimeout(() => {
-                            var s_dialog = new mdui.Dialog('s_dialog');
                             s_dialog.handleUpdate();
                         }, 0);
                     },
@@ -71,7 +69,6 @@ mdui.JQ(function(){
                         app.s_data = JSON.parse(data).result.songs;
                         app.s_page += 1;
                         setTimeout(() => {
-                            var s_dialog = new mdui.Dialog('s_dialog');
                             s_dialog.handleUpdate();
                         }, 0);
                     }
@@ -123,7 +120,7 @@ mdui.JQ(function(){
                 var t = this.name+" - "+this.artist;
                 document.title = "▶ " +t;
                 if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) !== "micromessenger") {
-                    history.pushState(null, this.name+" - "+t, '?id='+this.id);
+                    history.pushState(null, null, '?id='+this.id);
                 }
             },
             play: function(t){
@@ -139,34 +136,8 @@ mdui.JQ(function(){
                         }
                         if(app.lyric && app.tlyric !== app.none_lyric) {
                             for (name in app.lyric) {
-                                if (name <= app.currentTime) {
-                                    mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
-                                    mdui.JQ("div[time = '" + name + "']").addClass("show");
-                                    if (app.tlyric) {
-                                        var lo = mdui.JQ(".info_lyric>div").length - 5;
-                                        var co = mdui.JQ("div[time='"+name+"']").index() - 2;
-                                        if(co > 0 && co < lo) {
-                                            t = -56*co;
-                                        } else if(co > lo-1) {
-                                            t = -56*lo+10;
-                                        } else if(co == -2) {
-                                            t = 0;
-                                        }
-                                    } else {
-                                        var lo = mdui.JQ(".info_lyric>div").length - 8;
-                                        var co = mdui.JQ("div[time='"+name+"']").index() - 3;
-                                        if(co > 0 && co < lo) {
-                                            t = -38*co;
-                                        } else if(co > lo-1) {
-                                            t = -38.18*lo+10;
-                                        } else if (co == -3) {
-                                            t = 0;
-                                        }
-                                    }
-                                    if(t !== app.moving) {
-                                        app.moving = t;
-                                        main_scroll.scrollTo(0, app.moving, 300);
-                                    }
+                                if (name == app.currentTime) {
+                                    app.main_moving();
                                 }
                             }
                         }
@@ -178,6 +149,42 @@ mdui.JQ(function(){
             },
             change: function(value){
                 this.$refs.player.currentTime = value;
+                if(app.lyric && app.tlyric !== app.none_lyric) {
+                    for (name in app.lyric) {
+                        if (name <= app.currentTime) {
+                            app.main_moving();
+                        }
+                    }
+                }
+            },
+            main_moving: function(){
+                mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
+                mdui.JQ("div[time = '" + name + "']").addClass("show");
+                if (this.tlyric) {
+                    var lo = mdui.JQ(".info_lyric>div").length - 5;
+                    var co = mdui.JQ("div[time='"+name+"']").index() - 2;
+                    if(co > 0 && co < lo) {
+                        t = -56*co;
+                    } else if(co > lo-1) {
+                        t = -56*lo+10;
+                    } else if(co == -2) {
+                        t = 0;
+                    }
+                } else {
+                    var lo = mdui.JQ(".info_lyric>div").length - 8;
+                    var co = mdui.JQ("div[time='"+name+"']").index() - 3;
+                    if(co > 0 && co < lo) {
+                        t = -38*co;
+                    } else if(co > lo-1) {
+                        t = -38.18*lo+10;
+                    } else if (co == -3) {
+                        t = 0;
+                    }
+                }
+                if(t !== this.moving) {
+                    this.moving = t;
+                    main_scroll.scrollTo(0, this.moving, 300);
+                }
             },
             getlyric: function(id){
                 mdui.JQ.ajax({

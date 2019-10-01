@@ -3,48 +3,64 @@
 <head>
 	<title>404 Not Found 1!!</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-	<link rel="stylesheet" href="/css/loading_page.css" />
-</head>
-<body class="loading_page">
-	<div class="loading_box">
-		<div class="loader">
-			<div class="box">
-				<div class="circle"></div>
-			</div>
-			<div class="box">
-				<div class="circle"></div>
-			</div>
-			<div class="box">
-				<div class="circle"></div>
-			</div>
-			<div class="box">
-				<div class="circle"></div>
-			</div>
-			<div class="box">
-				<div class="circle"></div>
-			</div>
-			<div class="box">
-				<div class="circle"></div>
-			</div>
-		</div>
-		<p>相见时难别亦难，东风无力百花残</p>
-	</div>
-	<script>
-		window.onload = function(){
-			var s = [
-				"相见时难别亦难，东风无力百花残",
-				"劝君更尽一杯酒，西出阳关无故人",
-				"莫愁前路无知己，天下谁人不识君",
-				"接天莲叶无穷碧，映日荷花别样红",
-				"孤帆远影碧空尽，唯见长江天际流",
-				"青枫江上秋帆远，白帝城边古木疏",
-				"北风卷地白草折，胡天八月即飞雪",
-				"多情只有春庭月，犹为离人照落花",
-				"日暮酒醒人已远，满天风雨下西楼",
-				"春蚕到死丝方尽，蜡炬成灰泪始干"
-		    ];
-		    document.getElementsByTagName('p')[0].innerText = s[Math.floor(Math.random()*10)];
+	<style>
+		body {
+			margin: 0;
+			display: flex;
+			align-items: center;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			color: #FFFFFF;
+			background-color: #05ABEC;
+			animation: bg-color 10s infinite;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
-	</script>
+		@keyframes bg-color {
+			0% {
+				background-color: #05ABEC;
+			}
+			25% {
+				background-color: #64B5F6;
+			}
+			50% { 
+				background-color: #509AF1; 
+			}
+			75% { 
+				background-color: #42A5F5; 
+			}
+			100% { 
+				background-color: #05ABEC; 
+			}
+		}
+		.box {
+			padding: 0 40px;
+		}
+		h1 {
+			margin-top: 0px;
+			margin-bottom: 30px;
+			font-size: 66px;
+		}
+		P {
+			margin: 16px auto;
+			font-size: 20px;
+		}
+		p:last-child {
+			margin-top: 60px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<h1>:(</h1>
+		<p>你的网页遇到错误，需要重新启动。</p>
+		<p>我们不搜集任何错误信息，现在你可以关闭网页。</p>
+		<p>如果你想了解更多信息，则可以稍后在线搜索此错误：404_PAGE_NOT_FOUND</p>
+	</div>
 </body>
 </html>
