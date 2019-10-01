@@ -2,10 +2,10 @@
     width: 0px!important;
 }
 ::selection{
-    background: transparent;
+    background: transparent!important;
 }
 ​​​​​​​::-moz-selection{
-    background: transparent;
+    background: transparent!important;
 }
 body {
     position: fixed;
