@@ -228,7 +228,7 @@ mdui.JQ(function(){
                 }
                 return lrcObj;
             },
-            download: function(url){
+            save: function(url){
                 var _a = document.createElement("a");
                 _a.href = url;
                 _a.click();
