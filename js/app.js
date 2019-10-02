@@ -232,6 +232,7 @@ mdui.JQ(function(){
                 var _a = document.createElement("a");
                 _a.href = url;
                 _a.click();
+                _a.remove();
             },
             s_to_hs: function(seconds){
                 var min = Math.floor(seconds / 60),
