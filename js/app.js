@@ -228,13 +228,8 @@ mdui.JQ(function(){
                 }
                 return lrcObj;
             },
-            save: function(data, filename){
-                const save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
-    save_link.href = data;
-    save_link.download = filename;
-    const event = document.createEvent('MouseEvents');
-    event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-    save_link.dispatchEvent(event);
+            save: function(url, filename){
+                window.open(url);
             },
             s_to_hs: function(seconds){
                 var min = Math.floor(seconds / 60),
