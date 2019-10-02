@@ -18,6 +18,7 @@ mdui.JQ(function(){
             loading_done: false,
             moving: -0,
             currentTime: 0,
+            lyricTime: 0,
             alltime: 0,
             set_volume: false,
             volume: 100,
@@ -154,8 +155,7 @@ mdui.JQ(function(){
                 }
             },
             main_moving: function(){
-                mdui.JQ(".info_lyric>div").attr("class", "lyric_box");
-                mdui.JQ("div[time = '" + name + "']").addClass("show");
+                this.lyricTime = name;
                 if (this.tlyric) {
                     var lo = mdui.JQ(".info_lyric>div").length - 5;
                     var co = mdui.JQ("div[time='"+name+"']").index() - 2;

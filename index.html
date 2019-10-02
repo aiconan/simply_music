@@ -56,7 +56,7 @@
             </header>
             <main class="mdui-container">
                 <div class="info_lyric">
-                    <div class="lyric_box" v-for="(value, name, index) in lyric" :time="name">
+                    <div class="lyric_box" v-for="(value, name, index) in lyric" :time="name" :class="{show:name==lyricTime}">
                         <div class="lyric">{{ value }}</div>
                         <div class="tlyric" v-if="tlyric">{{ tlyric[name] }}</div>
                     </div>
