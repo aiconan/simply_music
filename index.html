@@ -139,9 +139,9 @@
                             <p>曲名：{{ name }}</p>
                             <p>歌手：{{ artist }}</p>
                             <p>专辑：{{ album }}</p>
-                            <button class="mdui-btn mdui-ripple mdui-m-b-1" @click="save(picurl)">保存图片</button>
+                            <button class="mdui-btn mdui-ripple mdui-m-b-1" @click="save(picurl, name+' - '+artist)">保存图片</button>
                             <br />
-                            <button class="mdui-btn mdui-ripple" @click="save(url)">下载歌曲</button>
+                            <button class="mdui-btn mdui-ripple" @click="save(url, name+' - '+artist)">下载歌曲</button>
                         </div>
                     </div>
                 </div>
