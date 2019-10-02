@@ -228,6 +228,11 @@ mdui.JQ(function(){
                 }
                 return lrcObj;
             },
+            download: function(url){
+                var _a = document.createElement("a");
+                _a.href = url;
+                _a.click();
+            },
             s_to_hs: function(seconds){
                 var min = Math.floor(seconds / 60),
                 second = seconds % 60,
