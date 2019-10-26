@@ -44,7 +44,7 @@ mdui.JQ(function(){
             main_scroll = new IScroll("main", scroll);
             mdui.JQ(".loading_page").remove();
             mdui.JQ("#app").show();
-            this.setvolume(localStorage.volume || 100);
+            this.setvolume(localStorage.volume*100 || 100);
             this.player(this.getQueryString("id") || 38592976);
         },
         methods: {
@@ -209,7 +209,7 @@ mdui.JQ(function(){
             },
             setvolume: function(value) {
                 this.$refs.player.volume = this.volume / 100;
-                localStorage.volume = this.volume;
+                localStorage.volume = this.volume / 100;
             },
             parseLyric: function(lrc){
                 var lyrics = lrc.split("\n");
