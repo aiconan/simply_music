@@ -142,7 +142,7 @@ main {
     border-width: 2px;
 }
 .d_dialog .d_title {
-    height: 48px;
+    height: 54px;
     font-size: 16px;
     border-bottom: 1px solid rgba(0,0,0,.12);
 }
