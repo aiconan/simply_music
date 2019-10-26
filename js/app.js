@@ -21,7 +21,7 @@ mdui.JQ(function(){
             lyricTime: 0,
             alltime: 0,
             set_volume: false,
-            volume: 100,
+            volume: 80,
             s_loading: false,
             s_id: false,
             s_data: null,
@@ -208,6 +208,7 @@ mdui.JQ(function(){
                 })
             },
             setvolume: function(value) {
+                this.volume = value;
                 this.$refs.player.volume = this.volume / 100;
                 localStorage.volume = this.volume / 100;
             },
