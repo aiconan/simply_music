@@ -44,7 +44,7 @@ mdui.JQ(function(){
             main_scroll = new IScroll("main", scroll);
             mdui.JQ(".loading_page").remove();
             mdui.JQ("#app").show();
-            this.setvlume(localStorage.volume || 100);
+            this.setvolume(localStorage.volume || 100);
             this.player(this.getQueryString("id") || 38592976);
         },
         methods: {
