@@ -210,6 +210,9 @@ footer .mdui-spinner {
 .mdui-spinner-layer {
     border-color: #69f0ae;
 }
+.mdui-slider-track {
+    width: 100%;
+}
 .changetime .mdui-slider-thumb {
     box-shadow: 0 0 8px #69f0ae;
     animation: dot-move 3s linear 2s infinite;
