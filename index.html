@@ -67,7 +67,7 @@
                 <button class="btn-ph"></button>
                 <transition name="slide-fade">
                     <label class="mdui-slider setvalume" v-show="set_volume === true">
-                        <input type="range" id="setvolume" step="1" min="0" max="100" @input="setvolume(volume)" @change="set_volume = false" v-model="volume"/>
+                        <input type="range" id="setvolume" step="1" min="0" max="100" @input="setvolume(volume)" @change="set_volume = false" />
                     </label>
                 </transition>
                 <button class="mdui-btn mdui-btn-icon mdui-btn-dense set_volume" @click="set_volume = !set_volume">
