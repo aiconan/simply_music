@@ -101,7 +101,7 @@ main {
     height: 48px;
 }
 .s_dialog input {
-    height: 48px;
+    height: 54px;
     width: 100%;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -116,12 +116,12 @@ main {
 .s_dialog .mdui-btn-dense {
     position: absolute;
     right: 16px;
-    top: 8px;
+    top: 11px;
 }
 .s_dialog .s_loading {
     position: absolute;
     right: 16px;
-    top: 8px;
+    top: 11px;
     width: 32px;
     height: 32px;
 }
