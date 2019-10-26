@@ -148,14 +148,15 @@
             </div>
         </div>
         <script>
-            if ((location.href || '').indexOf('console') > -1) {
+            ;(function() {
+                if (!/eruda=true/.test(window.location) return;
                 var script = document.createElement('script');
                 script.src="https://cdn.jsdelivr.net/npm/eruda";
                 document.body.appendChild(script); 
                 script.onload = function() { 
-                    eruda.init() 
+                    eruda.init(); 
                 };
-            }
+            })();
         </script>
         <script src="./js/mdui@0.4.3.min.js"></script>
         <script src="./js/vue@2.6.10.min.js"></script>
