@@ -208,9 +208,8 @@ mdui.JQ(function(){
                 })
             },
             setvolume: function(value) {
-                this.volume = value;
                 this.$refs.player.volume = this.volume / 100;
-                localStorage.volume = this.volume / 100;
+                localStorage.volume = this.volume;
             },
             parseLyric: function(lrc){
                 var lyrics = lrc.split("\n");
