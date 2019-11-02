@@ -31,6 +31,7 @@ mdui.JQ(function(){
         updated: function(){
             mdui.updateSliders();
             mdui.mutation();
+            main_scroll.refresh();
             var s_dialog = new mdui.Dialog('s_dialog');
             s_dialog.handleUpdate();
         },
