@@ -237,6 +237,10 @@ footer .mdui-spinner {
         box-shadow: 0 0 8px #69f0ae;
     }
 }
+.mdui-spinner {
+    -webkit-animation: mdui-spinner 600ms linear infinite;
+    animation: mdui-spinner 600ms linear infinite;
+}
 .mdui-slider-zero .mdui-slider-thumb {
     box-shadow: 0 0 0px;
 }
