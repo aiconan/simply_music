@@ -96,9 +96,7 @@
                 <div class="mdui-spinner" v-show="!loading_done"></div>
             </footer>
             <div class="bg-mask"></div>
-            <transition name="fade">
-                <div class="bg-img" v-show="loading_done" :style="{ backgroundImage: 'url('+bgurl+')' }"></div>
-            </transition>
+            <div class="bg-img" :style="{ backgroundImage: 'url('+bgurl+')' }"></div>
             <div class="mdui-dialog s_dialog" id="search_box">
                 <input type="text" placeholder="键入曲名，回车搜索" @keyup.enter="s_page = 1; search(s_text)" v-model="s_text" />
                 <div class="mdui-spinner s_loading" v-show="s_loading"></div>
