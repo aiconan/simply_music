@@ -30,7 +30,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;  
     background-position: 50%;
-    transition: opacity .3s linear, background-image ease-in-out .2s;
+    transition: opacity .3s linear, background-image .3s ease-in-out;
     transform-origin: center top;
     -webkit-transform: scale(1.5);
     -ms-transform: scale(1.5);
