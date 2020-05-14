@@ -36,8 +36,10 @@ mdui.JQ(function(){
             s_dialog.handleUpdate();
         },
         mounted: function(){
-            //var r = mdui.JQ("header").height();
-            //mdui.JQ(".mdui-toolbar").attr("style","height:"+r+"px!important");
+            if(this.isMobile()){
+                var r = mdui.JQ("header").height();
+                mdui.JQ(".mdui-toolbar").attr("style", "height:"+r+"px!important");
+            }
             var scroll = {
                 mouseWheel: true,
                 click: false
@@ -121,6 +123,14 @@ mdui.JQ(function(){
                 if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i)[0] !== "micromessenger") {
                     history.pushState(null, null, '?id='+this.id);
                 }
+            },
+            isMobile: function(){
+                var ua = navigator.userAgent;
+                var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+                isIphone =!ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+                isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+                isMobile = isIphone || isAndroid;
+                return isMobile;
             },
             play: function(t){
                 if (app.$refs.player.paused || t =="play") {
