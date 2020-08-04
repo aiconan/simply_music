@@ -113,7 +113,7 @@
                         <div>
                             <div class="mdui-list-item" v-for="item in s_data" @click="player(item.id)">
                                 <div class="mdui-list-item-content">
-                                    <span>{{ item.name }}</span>
+                                    <span>{{ item.name }} {{ item.alias[0] }}</span>
                                     <br />
                                     <small v-for="i in item.artists">[ {{ i.name }} ] </small>
                                 </div>
