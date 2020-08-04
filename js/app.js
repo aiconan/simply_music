@@ -52,7 +52,7 @@ mdui.JQ(function(){
         },
         methods: {
             search: function(text){
-                if (!text) return false;
+                if (!text || (text == this.s_text && this.s_page == 1)) return false;
                 mdui.JQ.ajax({
                     url: this.api + "search",
                     data: {
