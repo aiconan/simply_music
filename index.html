@@ -119,7 +119,7 @@
                                     </span>
                                     <br />
                                     <small v-for="(value, index) in item.artists">
-                                        {{ index == item.artists.length - 1 ? value.name : value.name + "，" }}
+                                        {{ index == item.artists.length - 1 ? value.name : value.name + ", " }}
                                     </small>
                                 </div>
                                 <div class="mdui-spinner s_s_loading" v-if="item.id == s_id"></div>
