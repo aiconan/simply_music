@@ -120,7 +120,7 @@ mdui.JQ(function(){
                 this.alltime = parseInt(this.$refs.player.duration);
                 var t = this.name+" - "+this.artist;
                 document.title = "▶ " +t;
-                if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i)[0] !== "micromessenger") {
+                if (navigator.userAgent.toLowerCase().match(/MicroMessenger/i) == null) {
                     history.pushState(null, null, '?id='+this.id);
                 }
             },
