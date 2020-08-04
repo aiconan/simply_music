@@ -113,9 +113,14 @@
                         <div>
                             <div class="mdui-list-item" v-for="item in s_data" @click="player(item.id)">
                                 <div class="mdui-list-item-content">
-                                    <span>{{ item.name }}{{ item.alias[0]?"（"+item.alias[0]+"）":"" }}</span>
+                                    <span>
+                                        {{ item.name }}
+                                        {{ item.alias[0] ? "（" + item.alias[0] + "）" : "" }}
+                                    </span>
                                     <br />
-                                    <small v-for="i in item.artists">[ {{ i.name }} ] </small>
+                                    <small v-for="(value, index) in item.artists">
+                                        {{ index == item.artists.length ? value : value + "，" }}
+                                    </small>
                                 </div>
                                 <div class="mdui-spinner s_s_loading" v-if="item.id == s_id"></div>
                                 <i class="mdui-list-item-icon mdui-icon material-icons" v-if="item.id !== s_id">play_circle_outline</i>
