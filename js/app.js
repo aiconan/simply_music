@@ -52,7 +52,7 @@ mdui.JQ(function(){
         },
         methods: {
             search: function(text){
-                if (!text || (text == this.s_text && this.s_page == 1)) return false;
+                if (!text) return false;
                 mdui.JQ.ajax({
                     url: this.api + "search",
                     data: {
@@ -110,7 +110,7 @@ mdui.JQ(function(){
                         app.$refs.player.pause();
                         app.playnow = false;
                         app.$refs.player.load();
-                        mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
+                        // mdui.JQ("link[rel=\"shortcut icon\"]").attr("href",app.picurl);
                         app.loading_done = true;
                         app.s_id = false;
                     }
